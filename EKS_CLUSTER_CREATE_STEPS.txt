@@ -1,0 +1,82 @@
+
+
+STEPS TO CREATE THE EKS CLUSTER
+
+
+
+STPE 1:  first we have to install the AWS-cli by using following command
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+aws --version
+
+
+STEP 2: then we have to install the KUBECTL
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+ 
+KUBECTL : kubectl it the command line tool used to instract with the eks cluster
+"""""""""
+ following cmd used to install the kubectl
+ 
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/latest/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
+kubectl version --short --client
+
+
+
+STEP 3: EKSCTL it is also command line tool used to create update delete the ekscluster
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  use following command to to install eksctl
+  
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.138.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+
+STEP 4 : then we have to create the eks-cluster with appropriate user by using eksctl command line
+
+   use following cmd to create the eks cluster
+   
+   
+Run the following command to create a basic EKS cluster:
+
+eksctl create cluster \
+  --name my-cluster \
+  --region us-east-1 \
+  --nodegroup-name my-nodes \
+  --node-type t3.medium \
+  --nodes 3 \
+  --nodes-min 1 \
+  --nodes-max 4 \
+  --managed
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+  
+STEP 5: Configure kubectl to Use Your New Cluster
+After creating the cluster, configure kubectl to interact with it:
+
+
+aws eks --region us-east-1 update-kubeconfig --name my-cluster
+
+Verify the Cluster
+Check if your cluster is working by listing the nodes:
+
+kubectl get nodes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+STEPS 6 : scale up the eks cluster use following command
+
+eksctl scale nodegroup --cluster my-cluster --name my-nodes --nodes 5
+
+eksctl scale nodegroup --cluster=<cluster-name> --name=<nodegroup-name> --nodes=<desired-node-count>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+STEP 7: delete the eks cluster using eksctl cmd
+
+eksctl delete cluster --name <cluster-name>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+

@@ -65,18 +65,26 @@ Check if your cluster is working by listing the nodes:
 
 kubectl get nodes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-STEPS 6 : scale up the eks cluster use following command
+STEPS 6 : scale up and scal dows  the eks cluster use following command
 
 eksctl scale nodegroup --cluster my-cluster --name my-nodes --nodes 5
 
 eksctl scale nodegroup --cluster=<cluster-name> --name=<nodegroup-name> --nodes=<desired-node-count>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-STEP 7: delete the eks cluster using eksctl cmd
+STEPS 7: delte the node_group first using following cmd
+
+aws eks delete-nodegroup --cluster-name your-cluster-name --nodegroup-name your-nodegroup-name --region eu-west-2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+STEP 8: delete the eks cluster using eksctl cmd
 
 eksctl delete cluster --name <cluster-name>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+use  the following command to list all clusters across various regions:
+
+aws eks list-clusters --region eu-west-1
 
 
 

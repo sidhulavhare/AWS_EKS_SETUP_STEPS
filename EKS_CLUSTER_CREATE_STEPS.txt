@@ -74,7 +74,7 @@ eksctl scale nodegroup --cluster=<cluster-name> --name=<nodegroup-name> --nodes=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 STEPS 7: delte the node_group first using following cmd
 
-aws eks delete-nodegroup --cluster-name your-cluster-name --nodegroup-name your-nodegroup-name --region eu-west-2
+aws eks delete-nodegroup --cluster-name <your-cluster-name> --nodegroup-name <your-nodegroup-name> --region <eu-west-2>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 STEP 8: delete the eks cluster using eksctl cmd

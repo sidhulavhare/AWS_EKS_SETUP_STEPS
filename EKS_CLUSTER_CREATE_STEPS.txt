@@ -86,5 +86,46 @@ use  the following command to list all clusters across various regions:
 
 aws eks list-clusters --region eu-west-1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+#	usefull command on k8s
+
+
+command to create the namespace in the k8s cluster
+
+1]  kubectl create namespace <three-tire>
+
+cmd to delete the namespace in the k8s cluster
+
+2]  kubectl delete namespace <three-tire>
+
+cmd to show the namespace
+
+3]  kubectl get namespaces
+
+cmd to list the pod in namespace
+
+4] kubectl get pods -n <namespace>
+
+cmd to list the deployment 
+
+5] kubectl get deployment -n <namespace>
+
+cmd to delete the deployment 
+
+kubectl delete deployment <deployment name> -n <namespace> 
+
+6] cmd to see all the pod in all namespace
+
+kubectl get pods --app-namespaces
+
+7] cmd to see the pods logs
+ 
+kubectl exec -it <pod_name> -- /bin/bash -n <namespace>
+
+8] cmd to login inside the mongodb pods sontainer
+
+kubectl exec -it mongodb-5f8c884c5c-xwn2m -n three-tier -- /bin/sh
+
 
 
